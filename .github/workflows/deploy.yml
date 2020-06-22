@@ -14,15 +14,22 @@ jobs:
       with:
         creds: ${{ secrets.AZURE_CREDENTIALS}}
         enable-AzPSSession: true
-    - name: Run Az CLI script
-      run: |
-        az webapp list --query "[?state=='Running']"
+#    - name: Run Az CLI script
+#      run: |
+#        az webapp list --query "[?state=='Running']"
     - name: Use Node.js ${{ env.NODE_VERSION }}
       uses: actions/setup-node@v1
       with:
         node-version: ${{ env.NODE_VERSION }}
-    - name: npm install
-      run: npm install
 
-    - name: npm build
-      run: npm build
+    - name: Checkout
+      uses: actions/checkout@v1
+
+    - name: Clean and install dependencies
+      run: npm ci
+
+    - name: Build
+      run: npm run build:ci
+
+    - name: Test
+      run: npm test -- --configuration=ci
