@@ -1,5 +1,8 @@
 on: [push]
 
+env:
+    NODE_VERSION: 14
+
 name: ByggOgDeploy
 
 jobs:
@@ -11,3 +14,15 @@ jobs:
       with:
         creds: ${{ secrets.AZURE_CREDENTIALS}}
         enable-AzPSSession: true
+    - name: Run Az CLI script
+      run: |
+        az webapp list --query "[?state=='Running']"
+    - name: Use Node.js ${{ env.NODE_VERSION }}
+      uses: actions/setup-node@v1
+      with:
+        node-version: ${{ env.NODE_VERSION }}
+    - name: npm install
+      run: npm install
+
+    - name: npm build
+      run: npm build
