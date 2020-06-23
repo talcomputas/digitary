@@ -32,4 +32,4 @@ jobs:
         app-name: 'digitary'
         slot-name: 'production'
         publish-profile: ${{ secrets.AzureAppService_PublishProfile_1d18c585d1494affab73a946acfcadbf }}
-        package: .
+        package: ./dist/digitary
