@@ -46,11 +46,17 @@ jobs:
         name: deploy_dist
     - name: Display structure of downloaded files
       run: ls -R
-
-    - name: 'Deploy to Azure Web App'
-      uses: azure/webapps-deploy@v2
+    - uses: azure/login@v1
       with:
-        app-name: 'digitary'
-        slot-name: 'production'
-        publish-profile: ${{ secrets.AzureAppService_PublishProfile_1d18c585d1494affab73a946acfcadbf }}
-        package: dist/digitary
+        creds: ${{ secrets.AZURE_CREDENTIALS }}
+    - uses: azure/webapps-deploy@v2
+      with:
+        app-name: deploy_dist
+
+#    - name: 'Deploy to Azure Web App'
+#      uses: azure/webapps-deploy@v2
+#      with:
+#        app-name: 'digitary'
+#        slot-name: 'production'
+#        publish-profile: ${{ secrets.AzureAppService_PublishProfile_1d18c585d1494affab73a946acfcadbf }}
+#        package: dist/digitary
