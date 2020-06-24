@@ -8,7 +8,7 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "build:ci": "ng build --prod --sourceMap=false --base-href /digitary/",
+    "build:ci": "ng build --prod --sourceMap=false --base-href /deploy_dist/",
     "test:ci": "ng test --watch=false --browsers=ChromeHeadless"
   },
   "private": true,
