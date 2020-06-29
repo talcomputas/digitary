@@ -43,6 +43,11 @@ jobs:
       uses: azure/CLI@v1
       with:
         inlinescript: |
-          date=`date -d "10 minutes ago ago" '+%Y-%m-%dT%H:%MZ'`
+          date=`date -d "10 minutes ago" '+%Y-%m-%dT%H:%MZ'`
           echo $date
-          az storage blob delete-batch --source digitary --account-name frontwebstorage --pattern * --if-unmodified-since $date  --account-key ${{ secrets.AZURE_ACCOUNT_KEY }}
+#          az storage blob delete-batch \
+#          --source digitary
+#          --account-name frontwebstorage
+#          --pattern *
+#          --if-unmodified-since $date
+#          --account-key ${{ secrets.AZURE_ACCOUNT_KEY }}
