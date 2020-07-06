@@ -39,10 +39,12 @@ jobs:
 #        inlinescript: az storage blob upload-batch --account-name frontwebstorage --account-key ${{ secrets.AZURE_ACCOUNT_KEY }} --source dist/digitary --destination 'digitary'
 
     - name: Set date
-      run: DATE=`date --date="1 day ago" +%Y-%m-%dT%H:%MZ`
+      run: |
+        export FOO=`date --date="1 day ago" +%Y-%m-%dT%H:%MZ`
+        echo "::set-env name=FOO::$FOO"
 
     - name: Print date
-      run: echo $DATE
+      run: echo $FOO
 
 #    - name: Azure delete old js and css
 #      uses: azure/CLI@v1
