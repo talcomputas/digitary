@@ -42,7 +42,8 @@ jobs:
     - name: Azure delete old js and css
       uses: azure/CLI@v1
       with:
-        inlinescript: |
+        inlineScript: |
+          echo az --version
           date=`date -d "2 days ago" '+%Y-%m-%dT%H:%MZ'`
           echo $date
 #          az storage blob delete-batch --source digitary --account-name frontwebstorage --pattern "*.js" --if-unmodified-since $date --account-key ${{ secrets.AZURE_ACCOUNT_KEY }}
