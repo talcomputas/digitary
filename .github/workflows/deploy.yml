@@ -42,7 +42,9 @@ jobs:
     - name: test
       run: |
         date=`date --date="1 day ago" +%Y-%m-%dT%H:%MZ`
-        echo $date
+
+    - name: test 2
+      run: echo $date
 #    - name: Azure delete old js and css
 #      uses: azure/CLI@v1
 #      with:
