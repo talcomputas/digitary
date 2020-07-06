@@ -40,17 +40,14 @@ jobs:
 
     - name: Set date
       run: |
-        export FOO=`date --date="1 day ago" +%Y-%m-%dT%H:%MZ`
-        echo "::set-env name=FOO::$FOO"
+        export DATE=`date --date="1 day ago" +%Y-%m-%dT%H:%MZ`
+        echo "::set-env name=DATE::$DATE"
 
-    - name: Print date
-      run: echo $FOO
-
-#    - name: Azure delete old js and css
-#      uses: azure/CLI@v1
-#      with:
-#        inlineScript: |
-#          echo $DATE
+    - name: Azure delete old js and css
+      uses: azure/CLI@v1
+      with:
+        inlineScript: |
+          echo $DATE
 #          date=`date --date="1 day ago" +%Y-%m-%dT%H:%MZ`
 #          az storage blob delete-batch --source digitary --account-name frontwebstorage --pattern "*.js" --if-unmodified-since $date --account-key ${{ secrets.AZURE_ACCOUNT_KEY }}
 #          az storage blob delete-batch --source digitary --account-name frontwebstorage --pattern "*.css" --if-unmodified-since $date --account-key ${{ secrets.AZURE_ACCOUNT_KEY }}
