@@ -39,7 +39,7 @@ jobs:
 #        inlinescript: az storage blob upload-batch --account-name frontwebstorage --account-key ${{ secrets.AZURE_ACCOUNT_KEY }} --source dist/digitary --destination 'digitary'
 
     - name: Set date
-      run: ::set-env name=DATE=`date --date="1 day ago"`
+      run: DATE=`date --date="1 day ago" +%Y-%m-%dT%H:%MZ`
 
     - name: Print date
       run: echo $DATE
